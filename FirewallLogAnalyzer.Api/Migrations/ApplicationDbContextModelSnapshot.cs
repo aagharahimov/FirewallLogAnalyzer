@@ -28,18 +28,46 @@ namespace FirewallLogAnalyzer.Api.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("DestinationGeoCity")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DestinationGeoCountry")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("DestinationIP")
                         .IsRequired()
                         .HasMaxLength(45)
                         .HasColumnType("TEXT");
 
+                    b.Property<double?>("DestinationLatitude")
+                        .HasColumnType("REAL");
+
+                    b.Property<double?>("DestinationLongitude")
+                        .HasColumnType("REAL");
+
                     b.Property<int?>("DestinationPort")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("SourceGeoCity")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SourceGeoCountry")
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("SourceIP")
                         .IsRequired()
                         .HasMaxLength(45)
                         .HasColumnType("TEXT");
+
+                    b.Property<double?>("SourceLatitude")
+                        .HasColumnType("REAL");
+
+                    b.Property<double?>("SourceLongitude")
+                        .HasColumnType("REAL");
 
                     b.Property<int?>("SourcePort")
                         .HasColumnType("INTEGER");

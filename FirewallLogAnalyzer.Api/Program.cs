@@ -11,7 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 2. Register your services (we'll create LogParsingService next)
+// 2. Register your services
+builder.Services.Configure<GeoIpOptions>(builder.Configuration.GetSection("GeoIp")); // Configure options
+builder.Services.AddSingleton<GeoIpService>(); // GeoIpService can be a singleton as DatabaseReader is thread-safe
 builder.Services.AddScoped<LogParsingService>(); // Or AddTransient/AddSingleton depending on need
 
 builder.Services.AddControllers();
